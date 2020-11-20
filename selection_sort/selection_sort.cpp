@@ -22,43 +22,39 @@ void print(string arrayName, int arr[], int size, int numOfPasses, int numOfComp
     cout << endl;
 }
 
-void bubbleSort(int arr[], int size)
+void selectionSort(int arr[], int size)
 {
-    bool swapped;
     int i, j;
     int numOfPasses, numOfComparison, numOfSwap;
     numOfPasses = numOfComparison = numOfSwap = 0;
     for (i = 0; i < size - 1; i++)
     {
-        swapped = false;
-        for (j = 0; j < size - i - 1; j++)
-        {
-            if (arr[j] > arr[j + 1])
-            {
-                swap(arr[j], arr[j + 1]);
-                swapped = true;
-                numOfSwap++;
-            }
-            numOfComparison++;
-        }
         numOfPasses++;
-        // if there is no two elements swapped then return the array as sorted and stop the loop
-        if (!swapped)
-            break;
+        int *smallestNum = &arr[i];
+        for (j = i + 1; j < size; j++)
+        {
+            numOfComparison++;
+            if (arr[j] < *smallestNum)
+            {
+                smallestNum = &arr[j];
+            }
+        }
+        numOfSwap++;
+        swap(arr[i], *smallestNum);
     }
-    print("Data Array A", arr, size, numOfPasses, numOfComparison, numOfSwap);
+    print("Data Array A ", arr, size, numOfPasses, numOfComparison, numOfSwap);
 }
 
 int main()
 {
-    cout << "<< Improved Bubble Sort >>" << endl; // Title
+    cout << "<< Selection Sort >>" << endl; // Title
     int dA[25] = {100, 50, 88, 30, 60, 45, 25, 12, 10, 5, 98, 15, 65, 55, 45, 70, 20, 90, 66, 22, 120, 48, 35, 85, 2};
     int sizeA = sizeof(dA) / sizeof(dA[0]);
     int dB[25] = {5, 8, 30, 25, 35, 40, 42, 50, 55, 22, 24, 60, 66, 70, 75, 78, 80, 88, 95, 100, 118, 98, 120, 122, 121};
     int sizeB = sizeof(dB) / sizeof(dB[0]);
 
-    bubbleSort(dA, sizeA);
-    bubbleSort(dB, sizeB);
+    selectionSort(dA, sizeA);
+    selectionSort(dB, sizeB);
 
     cout << "\n\n";
     system("pause");
