@@ -1,12 +1,11 @@
 #include <iostream>
 using namespace std;
-int numOfPasses = 0, numOfComparison = 0, numOfSwap = 0;
+int numOfPasses = 0, numOfComparison = 0;
 
 void print(int arr[], int size)
 {
     cout << "\nnumber of passes = " << numOfPasses << endl
-         << "number of comparisons = " << numOfComparison << endl
-         << "number of swaps = " << numOfSwap << endl;
+         << "number of comparisons = " << numOfComparison << endl;
     cout << "The sorted array { ";
     for (int i = 0; i < size; i++)
         cout << arr[i] << ", ";
@@ -44,7 +43,6 @@ void merge(int arr[], int l, int m, int r)
     {
         numOfPasses++;
         numOfComparison++;
-        numOfSwap++;
         if (L[i] <= R[j])
         {
             arr[k] = L[i];
@@ -104,7 +102,7 @@ int main()
 
     mergeSort(dA, 0, sizeA - 1);
     print(dA, sizeA);
-    numOfPasses = numOfComparison = numOfSwap = 0;
+    numOfPasses = numOfComparison = 0;
     mergeSort(dB, 0, sizeB - 1);
     print(dB, sizeB);
 
