@@ -2,7 +2,7 @@
 
 This repo will cover one questions that had been solved by all the following methods:
 
-Simple Sort:
+Simple Sort
   - Bubble Sort
   - Improved Bubble Sort
   - Selection Sort
